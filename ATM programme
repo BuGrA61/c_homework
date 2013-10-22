@@ -1,0 +1,112 @@
+#include <stdio.h>	    //Fonksiyonları kullanmak için kütüphaneler eklendi
+#include <Windows.h>
+#include <stdlib.h>
+int main()
+{
+	system("color 02");
+
+	int sifre = 4142, sifre_girilen = 0, secim, bakiye = 280, eklenen_miktar = 0, son_bakiye = 0, cekilecek = 0, havale = 0;
+	int hesap_no;					//değerler tanımlandı
+	printf("\n\t\t*** ONCU Bank'a Hosgeldiniz ***\n\n\n");
+	printf("\t\tlutfen 4 haneli sifrenizi giriniz: ");
+	scanf_s("%d", &sifre_girilen);		//girilen şifreyi almaya yarayan fonksiyon
+	if (sifre_girilen == 4142)			//girilen şifreyi kontrol etmeye yarayan fonksiyon
+	{
+		printf("\n\t\tsifre dogru... \n");
+		Sleep(800);						//günlük hayata uyarlamak için kullanıldı
+		system("CLS");
+
+		printf("\n  Bakiye Goruntulemek Icin '1' tuslayiniz\n\n");
+		printf("  Hesabiniza Para Yatirmak Icin '2' tuslayiniz\n\n");
+		printf("  Para Cekmek icin '3' tuslayiniz\n\n");
+		printf("  Baska Bir Hesaba Havale Yapmak Icin '4' tuslayiniz\n\n");
+		printf("  Cikmak Icin '0' tuslayiniz: ");
+		_flushall();
+		scanf_s("%d", &secim);
+		switch (secim)						//seçim yapıldıktan sonraki durumları göstermek için kullanıldı
+		{
+		case 0:
+			system("CLS");
+			printf("\n  ONCU Bank Iyi Gunler Diler...");
+			Sleep(600);
+			exit(1);
+
+			break;
+		case 1:
+			system("CLS");
+			printf("Bakiyeniz = %d", bakiye);
+			Sleep(800);
+			break;
+
+		case 2:
+			system("CLS");
+			printf("Lutfen Yatirmak Istediginiz Miktari Giriniz: \n");
+			_flushall();
+			scanf_s("%d", &eklenen_miktar);
+			system("CLS");
+			printf("Paraniz Yatiriliyor...");
+			Sleep(800);
+			system("CLS");
+			son_bakiye = bakiye + eklenen_miktar;
+			printf("Bakiyeniz= %d", son_bakiye);
+			Sleep(800);
+			break;
+
+		case 3:
+			system("CLS");
+			printf("Lutfen Cekmek Istediginiz tutari Giriniz: \n");
+			_flushall();
+			scanf_s("%d", &cekilecek);
+			if (cekilecek>280)
+			{
+				printf("Bakiyeniz Yetersiz");
+				Sleep(600);
+
+			}
+			else
+			{
+
+				son_bakiye = bakiye - cekilecek;
+				printf("Lutfen Paranizi Para Haznesinden Aliniz...");
+				Sleep(500);
+				system("CLS");
+				printf("ONCU Bank Iyi Gunler Diler...");
+				Sleep(800);
+				exit(1);
+
+			}
+			break;
+
+		case 4:
+			system("CLS");
+			printf("  Lutfen Havale Yapmak Istediginiz Hesap Numarasini Giriniz: ");
+			_flushall();
+			scanf_s("%d", &hesap_no);
+			printf("  Havale Etmek Istediginiz Miktari Giriniz: ");
+			scanf_s("%d", &havale);
+			son_bakiye = bakiye - havale;
+			printf("  Havale Isleminiz Gerceklestiriliyor...\n");
+			Sleep(600);
+			printf("  Havale islemi basarili.%d nolu hesaba %d lira para havale edildi.\n  Kalan Bakiye: %d", hesap_no, havale, son_bakiye);
+			Sleep(2000);
+			break;
+		default:
+			system("CLS");
+			printf("\n  Yanlis Giris Yaptiniz... ");
+			Sleep(800);
+		}
+	}
+	else
+	{
+	
+	
+
+			printf("\n\t\tEksik Veya Yanlis Giris Yaptiniz...\n");
+			Sleep(800);
+			system("CLS");
+			
+			
+
+	}
+
+}
